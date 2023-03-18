@@ -1,0 +1,15 @@
+https://www.configserverfirewall.com/ubuntu-linux/uninstall-phpmyadmin-ubuntu/#:~:text=The%20%22apt%2Dget%20remove%20phpmyadmin,that%20are%20no%20longer%20required.
+
+Uninstall phpmyadmin
+        sudo apt-get remove phpmyadmin
+        sudo apt-get purge phpmyadmin
+        sudo apt-get autoremove
+        
+        
+To disable without uninstall
+        sudo a2disconf phpmyadmin
+        sudo systemctl reload apache2
+        
+To enable 
+        sudo a2enconf phpmyadmin
+        sudo systemctl reload apache2  

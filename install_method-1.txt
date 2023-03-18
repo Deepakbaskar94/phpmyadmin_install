@@ -1,0 +1,48 @@
+Apache Installation
+            sudo apt update
+            sudo apt install apache2
+            sudo ufw app list
+            sudo ufw allow 'Apache'
+            sudo ufw status
+            sudo systemctl status apache2
+            
+            hostname -I                         (to get my local ip)
+            curl -4 icanhazip.com           (to get my public ip address of aws)
+            
+ Managing the Apache Process
+            sudo systemctl stop apache2
+            sudo systemctl start apache2
+            sudo systemctl restart apache2
+            sudo systemctl reload apache2
+            sudo systemctl disable apache2
+            sudo systemctl enable apache2
+            
+            
+Setting Up Virtual Hosts (small basic website setting)
+            sudo mkdir /var/www/your_domain
+            sudo chown -R $USER:$USER /var/www/your_domain
+            sudo chmod -R 755 /var/www/your_domain
+            sudo nano /var/www/your_domain/index.html
+                            <html>
+                                <head>
+                                    <title>Welcome to Your_domain!</title>
+                                </head>
+                                <body>
+                                    <h1>Success!  The your_domain virtual host is working!</h1>
+                                </body>
+                            </html>
+                            
+             sudo nano /etc/apache2/sites-available/your_domain.conf
+                            <VirtualHost *:80>
+                                ServerAdmin webmaster@localhost
+                                ServerName your_domain
+                                ServerAlias www.your_domain
+                                DocumentRoot /var/www/your_domain
+                                ErrorLog ${APACHE_LOG_DIR}/error.log
+                                CustomLog ${APACHE_LOG_DIR}/access.log combined
+                            </VirtualHost>
+                            
+             sudo a2ensite your_domain.conf
+             sudo a2dissite 000-default.conf
+             sudo apache2ctl configtest
+             sudo systemctl restart apache2

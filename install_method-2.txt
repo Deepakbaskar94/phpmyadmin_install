@@ -1,0 +1,21 @@
+METHOD - 2
+https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-22-04
+
+Step 1 — Installing phpMyAdmin
+            sudo apt update
+            sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl
+
+                        Warning: When the prompt appears, “apache2” is highlighted, but not selected. 
+                        If you do not hit SPACE to select Apache, the installer will not move the necessary 
+                        files during installation. Hit SPACE, TAB, and then ENTER to select Apache.
+                        
+                ERROR 1819 (HY000)
+                        mysql -u root -p
+                                mysql >  UNINSTALL COMPONENT "file://component_validate_password";
+                                mysql > exit
+                        sudo apt install phpmyadmin
+                        mysql -u root -p
+                                mysql > INSTALL COMPONENT "file://component_validate_password";
+                                
+            sudo phpenmod mbstring
+            sudo systemctl restart apache2
